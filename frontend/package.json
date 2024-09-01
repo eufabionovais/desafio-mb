@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm run dev"
   },
   "dependencies": {
     "vue": "^3.4.37"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
+    "concurrently": "^8.2.2",
     "vite": "^5.4.1"
   }
 }
