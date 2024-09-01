@@ -128,3 +128,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignores both Backend and Frontend node_modules folder
+/backend/node_modules
+/frontend/node_modules
