@@ -29,11 +29,6 @@ body {
   padding-inline: 1.6rem;
 }
 
-
-
-
-
-
 input[type=radio],
 input[type=checbox] {
   accent-color: var(--primary)
@@ -49,7 +44,3 @@ input:focus-visible {
   outline: solid 1px var(--primary);
   outline-offset: 2px;
 }
-
-
-
-
