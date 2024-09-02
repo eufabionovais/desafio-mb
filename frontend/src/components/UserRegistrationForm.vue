@@ -108,7 +108,7 @@
         <p>Senha de acesso</p>
         <div>
           <label for="userPassword">Sua senha</label>
-          <input type="text" @keydown.enter.prevent id="userPassword" name="userPassword" v-model="step3.password" @blur="validateField('password', step3.password)">
+          <input type="password" @keydown.enter.prevent id="userPassword" name="userPassword" v-model="step3.password" @blur="validateField('password', step3.password)">
           <span v-if="errors.password">{{ errors.password }}</span>
         </div>
         <div>
@@ -184,7 +184,7 @@
 
         <div>
           <label for="userPassword">Sua senha</label>
-          <input type="text" @keydown.enter.prevent id="userPassword" name="userPassword" v-model="step3.password"   @blur="validateField('password', step3.password)">
+          <input type="password" @keydown.enter.prevent id="userPassword" name="userPassword" v-model="step3.password"   @blur="validateField('password', step3.password)">
           <span v-if="errors.password">{{ errors.password }}</span>
         </div>
    
@@ -196,6 +196,20 @@
 
 
   </form>
+
+
+  <div class="feedback-message" v-if="feedback.message" >
+    <h2>{{ feedback.message }}</h2>
+    <div v-if="feedback.data">
+      <ul>
+        <li v-for="(field, key) in feedback.data" :key="key">
+          <b>{{ key }}:</b> {{ field }}
+        </li>
+      </ul>
+    </div>
+    <button @click="startRewRegister">Reiniciar</button>
+  </div>
+
 </template>
 
 <script setup>
@@ -206,13 +220,19 @@ const {errors, validateField, validateAllFields} = useValidation();
 const currentStep = ref(1);
 const totalSteps = ref(4);
 
+const feedbackInitialValue = {
+  message: '',
+  data: ''
+}
 
-const step1 = ref({
+const feedback = ref({...feedbackInitialValue})
+
+const step1InitialValue = {
   email: '',
   type: ''
-})
+}
 
-const step2 = ref({
+const step2InitialValue = {
   name: '',
   cpf: '',
   birthDate: '',
@@ -220,25 +240,27 @@ const step2 = ref({
   companyName: '',
   cnpj: '',
   openingDate: ''
-})
+}
 
-const step3 = ref({
+const step3InitialValue = {
   password: ''
-})
+}
 
-
-
-
-
+const step1 = ref({...step1InitialValue})
+const step2 = ref({...step2InitialValue})
+const step3 = ref({...step3InitialValue})
 
 const goToNextStep = () => {
   const actualStep = validateStep(currentStep.value);
 
   if(actualStep.isValid) {
-    currentStep.value ++;
+    currentStep.value +=1;
   } 
 }
 
+const goToPreviousStep = () => {  
+  currentStep.value --;
+}
 
 const validateStep = (step) => {
   const steps = {
@@ -262,7 +284,6 @@ const validateStep1 = () => {
     isValid,
     fieldsToValidate
   }
-
 }
 
 const validateStep2 = () => {
@@ -311,9 +332,6 @@ const validateStep3 = () => {
 }
 
 
-const goToPreviousStep = () => {  
-  currentStep.value --;
-}
 
 const handleSubmitForm = ()=> {
 
@@ -338,14 +356,12 @@ const groupAllFieldsData = () => {
 }
 
 const submitForm = async (allFields) => {
+  const submitObject = allFields.reduce((acumulator, fieldItem) => {
+    acumulator[fieldItem.field] = fieldItem.value;
+    return acumulator
+  }, {})
 
-  const submitObject = allFields.map((fieldItem) => {
-    return {
-      [fieldItem.field]: fieldItem.value
-    }
-  })
-
- 
+  
   const response = await fetch('http://localhost:3000/registration', {
     method: 'POST',
     headers: {
@@ -355,11 +371,23 @@ const submitForm = async (allFields) => {
   });
 
   const result = await response.json();
+
   if (response.ok) {
-    alert(result.message);
+    feedback.value.message = result.message;
+    feedback.value.data = result.data;    
   } else {
-    alert(result.error);
+    feedback.value.message = result.message;
   }
+  currentStep.value = 0
+}
+
+
+const startRewRegister = () => {
+  currentStep.value = 1
+  step1.value = {... step1InitialValue}
+  step2.value = {... step2InitialValue}
+  step3.value = {... step3InitialValue}
+  feedback.value = {...feedbackInitialValue} 
 }
 
 </script> 
