@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const app = express();
+app.use(cors())
 const port = 3000;
 
 app.use(express.json());
@@ -11,6 +13,9 @@ app.get('/registration', (req, res) => {
 });
 
 app.post('/registration', (req, res) => {
+
+  console.log(req.body)
+
   const { email, type, details, password } = req.body;
   if (!email || !type || !details || !password) {
     return res.status(400).json({ error: 'Todos os campos são obrigatórios!' });
