@@ -393,6 +393,7 @@ provide('restartRegister', startRewRegister);
 
 .form-group {
   padding: 0 1.6rem 1.6rem;
+  border: none;
   &__fields-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -404,7 +405,6 @@ provide('restartRegister', startRewRegister);
     justify-content: space-between;
     margin-block-start: 2rem;
     .button:only-of-type {
-      margin-inline-start: auto;
       @media (max-width: 800px) {
         width: calc(50% - 20px);
         width: 100%;
