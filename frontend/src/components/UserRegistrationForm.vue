@@ -192,12 +192,8 @@
           </div>
     
           <div class="form-group__actions">
-            <!-- <button type="button" class="button button--outlined" @click="goToPreviousStep()">Voltar</button>
-            <button type="submit" class="button">Cadastrar</button> -->
-
             <ButtonBase variant="outlined" @click="goToPreviousStep()">Voltar</ButtonBase>
             <ButtonBase buttonType="submit">Cadastrar</ButtonBase>
-
           </div>
       </fieldset>
     </form>
@@ -217,9 +213,6 @@ import UserRegistrationStep from './UserRegistrationStep.vue';
 import UserRegistrationStepTitle from './UserRegistrationStepTitle.vue';
 
 const {errors, validateField, validateAllFields} = useValidation();
-
-
-
 
 const currentStep = ref(1);
 const totalSteps = ref(4);
@@ -364,9 +357,8 @@ const submitForm = async (allFields) => {
     acumulator[fieldItem.field] = fieldItem.value;
     return acumulator
   }, {})
-
   
-  const response = await fetch('http://localhost:3000/registration', {
+  const response = await fetch(`http://localhost:3000"/registration`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -395,9 +387,6 @@ const startRewRegister = () => {
 
 provide('restartRegister', startRewRegister);
 
-const mostrarAlerta = () => {
-  alert("teste")
-}
 
 </script> 
 
