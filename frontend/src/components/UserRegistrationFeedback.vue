@@ -8,12 +8,13 @@
           </li>
         </ul>
       </div>
-      <button class="button" @click="startRewRegister">Realizar Novo Cadastrao</button>
+      <ButtonBase  @click="startRewRegister">Realizar novo cadastro</ButtonBase>
     </div>
 </template>
 
 <script setup>
 import { inject } from 'vue';
+import ButtonBase from './ButtonBase.vue';
 import UserRegistrationStepTitle from './UserRegistrationStepTitle.vue';
   defineProps({
     title: {

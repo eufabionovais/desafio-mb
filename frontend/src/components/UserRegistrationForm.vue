@@ -146,7 +146,7 @@
 
               <div class="form-field__group">
                 <label class="form-field__label" for="userBirthDate">Data de Nascimento</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="userBirthDate" name="userBirthDate" v-model="step2.birthDate"  @blur="validateField('birthDate', step2.birthDate)">
+                <input class="form-field__field" type="date" @keydown.enter.prevent id="userBirthDate" name="userBirthDate" v-model="step2.birthDate"  @blur="validateField('birthDate', step2.birthDate)">
                 <div class="form-field__error" v-if="errors.birthDate">{{ errors.birthDate }}</div>
               </div>
 
@@ -172,7 +172,7 @@
 
               <div class="form-field__group">
                 <label class="form-field__label" for="companyOpeningDate">Data de abertura</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="companyOpeningDate" name="companyOpeningDate" v-model="step2.openingDate"  @blur="validateField('openingDate', step2.openingDate)">
+                <input class="form-field__field" type="date" @keydown.enter.prevent id="companyOpeningDate" name="companyOpeningDate" v-model="step2.openingDate"  @blur="validateField('openingDate', step2.openingDate)">
                 <div class="form-field__error" v-if="errors.openingDate">{{ errors.openingDate }}</div>
               </div>
 
@@ -358,7 +358,7 @@ const submitForm = async (allFields) => {
     return acumulator
   }, {})
   
-  const response = await fetch(`http://localhost:3000"/registration`, {
+  const response = await fetch(`http://localhost:3000/registration`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -32,30 +32,7 @@ body {
 
 
 
-.button {
-  background: var(--primary);
-  color: #fff;
-  font-size: 1.6rem;
-  padding-block: 0.8rem;
-  padding-inline: 1.6rem;
-  border-radius: 0.4rem;
-  border: solid 2px var(--primary);
-  transition: 0.4s;
-  cursor: pointer;
-  &:hover {
-    filter: brightness(1.2);
-  }
-}
 
-.button--outlined {
-  border: solid 2px var(--primary);
-  color: var(--primary);
-  background: #fff;
-  &:hover {
-    background: var(--primary);
-    color: white;
-  }  
-} 
 
 input[type=radio],
 input[type=checbox] {
