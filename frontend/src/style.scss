@@ -1,0 +1,78 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --orange: #ff9900;
+  --red: #ff0000;
+  --dark-gray: #595959;
+
+  --primary: var(--orange);
+  --fields-border-color: var(--dark-gray);
+  --error-color: var(--red);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.main-wrapper {
+  max-width: 1200px;
+  padding-block-start: 2.5rem;
+  margin-inline: auto;
+  padding-inline: 1.6rem;
+}
+
+
+
+
+.button {
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.6rem;
+  padding-block: 0.8rem;
+  padding-inline: 1.6rem;
+  border-radius: 0.4rem;
+  border: solid 2px var(--primary);
+  transition: 0.4s;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
+
+.button--outlined {
+  border: solid 2px var(--primary);
+  color: var(--primary);
+  background: #fff;
+  &:hover {
+    background: var(--primary);
+    color: white;
+  }  
+} 
+
+input[type=radio],
+input[type=checbox] {
+  accent-color: var(--primary)
+}
+
+input[type=date] {
+  padding-block: 0.95rem;
+  font-family: inherit;
+}
+
+button:focus-visible, 
+input:focus-visible {
+  outline: solid 1px var(--primary);
+  outline-offset: 2px;
+}
+
+
+
+
