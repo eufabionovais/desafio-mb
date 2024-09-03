@@ -8,7 +8,7 @@
         <div class="form-group__fields-wrapper">
           <div class="form-field__group">
             <label class="form-field__label" for="userEmail" >Endereço de e-mail</label>
-            <input class="form-field__field" type="email" @keydown.enter.prevent id="userEmail" name="userEmail" v-model="step1.email" @blur="validateField('email', step1.email);">
+            <input class="form-field__field" type="email" @keydown.enter.prevent id="userEmail" name="userEmail" placeholder="Ex.: nome@email.com.br" v-model="step1.email" @blur="validateField('email', step1.email);">
             <div class="form-field__error" v-if="errors.email">{{ errors.email }}</div>
           </div>
 
@@ -36,64 +36,64 @@
 
         <UserRegistrationStep :step="currentStep" :total="totalSteps" />
 
-        <div v-if="step1.type === 'pf'">
+        <template v-if="step1.type === 'pf'">
           <UserRegistrationStepTitle title="Pessoa Física" />
 
           <div class="form-group__fields-wrapper">
             <div class="form-field__group">
               <label class="form-field__label" for="userName">Nome</label>
-              <input class="form-field__field" type="text" @keydown.enter.prevent id="userName" name="userName" v-model="step2.name" @blur="validateField('name', step2.name)">
+              <input class="form-field__field" type="text" @keydown.enter.prevent id="userName" name="userName" placeholder="Ex.: João Maria da Silva" v-model="step2.name" @blur="validateField('name', step2.name)">
               <div class="form-field__error" v-if="errors.name">{{ errors.name }}</div>
             </div>
 
             <div class="form-field__group">
               <label class="form-field__label" for="userCpf">CPF</label>
-              <input class="form-field__field" type="text" @keydown.enter.prevent id="userCpf" name="userCpf" v-model="step2.cpf"  @blur="validateField('cpf', step2.cpf)">
+              <input class="form-field__field" type="text" @keydown.enter.prevent id="userCpf" name="userCpf" v-model="step2.cpf" placeholder="00000000000"  @blur="validateField('cpf', step2.cpf)">
               <div class="form-field__error" v-if="errors.cpf">{{ errors.cpf }}</div>
             </div>
 
             <div class="form-field__group">
               <label class="form-field__label" for="userBirthDate">Data de Nascimento</label>
-              <input class="form-field__field" type="date" id="userBirthDate" name="userBirthDate" v-model="step2.birthDate"  @blur="validateField('birthDate', step2.birthDate)">
+              <input class="form-field__field" type="date" id="userBirthDate" name="userBirthDate" v-model="step2.birthDate"  placeholder="00/00/0000"  @blur="validateField('birthDate', step2.birthDate)">
               <div class="form-field__error" v-if="errors.birthDate">{{ errors.birthDate }}</div>
             </div>
 
             <div class="form-field__group">
               <label class="form-field__label" for="userPhoneNumber">Telefone</label>
-              <input class="form-field__field" type="text" @keydown.enter.prevent id="userPhoneNumber" name="userPhoneNumber" v-model="step2.phone"   @blur="validateField('phone', step2.phone)">
+              <input class="form-field__field" type="text" @keydown.enter.prevent id="userPhoneNumber" name="userPhoneNumber" v-model="step2.phone"  placeholder="0000000000"   @blur="validateField('phone', step2.phone)">
               <div class="form-field__error" v-if="errors.phone">{{ errors.phone }}</div>
             </div>
           </div>
-        </div>
+        </template>
 
-        <div v-if="step1.type === 'pj'">
+        <template v-if="step1.type === 'pj'">
           <UserRegistrationStepTitle title="Pessoa Jurídica" />
           <div class="form-group__fields-wrapper">
             <div class="form-field__group">
               <label class="form-field__label" for="companyName">Razão Social</label>
-              <input class="form-field__field" type="text" @keydown.enter.prevent id="companyName" name="companyName"v-model="step2.companyName"   @blur="validateField('name', step2.companyName)">
+              <input class="form-field__field" type="text" @keydown.enter.prevent id="companyName" name="companyName"  placeholder="Ex.: Minha Empresa LTDA" v-model="step2.companyName"   @blur="validateField('name', step2.companyName)">
               <div class="form-field__error" v-if="errors.companyName">{{ errors.companyName }}</div>
             </div>
 
             <div class="form-field__group">
               <label class="form-field__label" for="companyRegistryNumber">CNPJ</label>
-              <input class="form-field__field" type="text" @keydown.enter.prevent id="companyRegistryNumber" name="companyRegistryNumber"v-model="step2.cnpj"   @blur="validateField('cnpj', step2.cnpj)">
+              <input class="form-field__field" type="text" @keydown.enter.prevent id="companyRegistryNumber" name="companyRegistryNumber" placeholder="00000000000000" v-model="step2.cnpj"   @blur="validateField('cnpj', step2.cnpj)">
               <div class="form-field__error" v-if="errors.cnpj">{{ errors.cnpj }}</div>
             </div>
 
             <div class="form-field__group">
               <label class="form-field__label" for="companyOpeningDate">Data de abertura</label>
-              <input class="form-field__field" type="date" id="companyOpeningDate" name="companyOpeningDate"v-model="step2.openingDate"   @blur="validateField('openingDate', step2.openingDate )">
+              <input class="form-field__field" type="date" id="companyOpeningDate" name="companyOpeningDate" placeholder="00/00/0000" v-model="step2.openingDate"   @blur="validateField('openingDate', step2.openingDate )">
               <div class="form-field__error" v-if="errors.openingDate">{{ errors.openingDate }}</div>
             </div>
 
             <div class="form-field__group">
               <label class="form-field__label" for="companyPhoneNumber">Telefone</label>
-              <input class="form-field__field" type="text" @keydown.enter.prevent id="companyPhoneNumber" name="companyPhoneNumber"v-model="step2.phone"  @blur="validateField('phone', step2.phone)">
+              <input class="form-field__field" type="text" @keydown.enter.prevent id="companyPhoneNumber" name="companyPhoneNumber" placeholder="00000000000" v-model="step2.phone"  @blur="validateField('phone', step2.phone)">
               <div class="form-field__error" v-if="errors.phone">{{ errors.phone }}</div>
             </div>
           </div>
-        </div>
+        </template>
   
         <div class="form-group__actions">
           <ButtonBase variant="outlined" @click="goToPreviousStep()">Voltar</ButtonBase>
@@ -108,7 +108,7 @@
 
           <div class="form-field__group">
             <label class="form-field__label" for="userPassword">Sua senha</label>
-            <input class="form-field__field" type="password" @keydown.enter.prevent id="userPassword" name="userPassword" v-model="step3.password" @blur="validateField('password', step3.password)">
+            <input class="form-field__field" type="password" @keydown.enter.prevent id="userPassword" name="userPassword" placeholder="******" v-model="step3.password" @blur="validateField('password', step3.password)">
             <div class="form-field__error" v-if="errors.password">{{ errors.password }}</div>
           </div>
           <div class="form-group__actions">
@@ -116,7 +116,6 @@
             <ButtonBase @click="goToNextStep()">Continuar</ButtonBase>
           </div>
       </fieldset>
-
       
       <fieldset v-if="currentStep === 4" class="form-group">
   
@@ -127,32 +126,32 @@
 
             <div class="form-field__group">
               <label class="form-field__label" for="userEmail">Endereço de e-mail</label>
-              <input class="form-field__field" type="text" @keydown.enter.prevent id="userEmail" name="userEmail" v-model="step1.email" @blur="validateField('email', step1.email)">
+              <input class="form-field__field" type="text" @keydown.enter.prevent id="userEmail" name="userEmail" placeholder="Ex.: nome@email.com.br" v-model="step1.email" @blur="validateField('email', step1.email)">
               <div class="form-field__error" v-if="errors.email">{{ errors.email }}</div>
             </div>
 
             <template v-if="step1.type === 'pf'">
               <div class="form-field__group">
                 <label class="form-field__label" for="userName">Nome</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="userName" name="userName" v-model="step2.name" @blur="validateField('name', step2.name)">
+                <input class="form-field__field" type="text" @keydown.enter.prevent id="userName" name="userName" placeholder="Ex.: João Maria da Silva" v-model="step2.name" @blur="validateField('name', step2.name)">
                 <div class="form-field__error" v-if="errors.name">{{ errors.name }}</div>
               </div>
 
               <div class="form-field__group">
                 <label class="form-field__label" for="userCpf">CPF</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="userCpf" name="userCpf" v-model="step2.cpf"  @blur="validateField('cpf', step2.cpf)">
+                <input class="form-field__field" type="text" @keydown.enter.prevent id="userCpf" name="userCpf" v-model="step2.cpf" placeholder="00000000000"  @blur="validateField('cpf', step2.cpf)">
                 <div class="form-field__error" v-if="errors.cpf">{{ errors.cpf }}</div>
               </div>
 
               <div class="form-field__group">
                 <label class="form-field__label" for="userBirthDate">Data de Nascimento</label>
-                <input class="form-field__field" type="date" @keydown.enter.prevent id="userBirthDate" name="userBirthDate" v-model="step2.birthDate"  @blur="validateField('birthDate', step2.birthDate)">
+                <input class="form-field__field" type="date" @keydown.enter.prevent id="userBirthDate" name="userBirthDate" v-model="step2.birthDate" placeholder="00/00/0000"  @blur="validateField('birthDate', step2.birthDate)">
                 <div class="form-field__error" v-if="errors.birthDate">{{ errors.birthDate }}</div>
               </div>
 
               <div class="form-field__group">
                 <label class="form-field__label" for="userPhoneNumber">Telefone</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="userPhoneNumber" name="userPhoneNumber" v-model="step2.phone"  @blur="validateField('phone', step2.phone)">
+                <input class="form-field__field" type="text" @keydown.enter.prevent id="userPhoneNumber" name="userPhoneNumber" placeholder="000000000" v-model="step2.phone"  @blur="validateField('phone', step2.phone)">
                 <div class="form-field__error" v-if="errors.phone">{{ errors.phone }}</div>
               </div>
             </template>
@@ -160,32 +159,35 @@
             <template  v-if="step1.type === 'pj'">
               <div class="form-field__group">
                 <label class="form-field__label" for="companyName">Razão Social</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="companyName" name="companyName" v-model="step2.companyName"  @blur="validateField('companyName', step2.companyName)">
+                <input class="form-field__field" type="text" @keydown.enter.prevent id="companyName" name="companyName" v-model="step2.companyName" placeholder="Minha Empresa LTDA"  @blur="validateField('companyName', step2.companyName)">
                 <div class="form-field__error" v-if="errors.companyName">{{ errors.companyName }}</div>
               </div>
 
               <div class="form-field__group">
                 <label class="form-field__label" for="companyRegistryNumber">CNPJ</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="companyRegistryNumber" name="companyRegistryNumber" v-model="step2.cnpj"  @blur="validateField('cnpj', step2.cnpj)">
+                <input class="form-field__field" type="text" @keydown.enter.prevent id="companyRegistryNumber" name="companyRegistryNumber" v-model="step2.cnpj" placeholder="00000000000000"  @blur="validateField('cnpj', step2.cnpj)">
                 <div class="form-field__error" v-if="errors.cnpj">{{ errors.cnpj }}</div>
               </div>
 
               <div class="form-field__group">
                 <label class="form-field__label" for="companyOpeningDate">Data de abertura</label>
-                <input class="form-field__field" type="date" @keydown.enter.prevent id="companyOpeningDate" name="companyOpeningDate" v-model="step2.openingDate"  @blur="validateField('openingDate', step2.openingDate)">
+                <input class="form-field__field" type="date" @keydown.enter.prevent id="companyOpeningDate" name="companyOpeningDate" v-model="step2.openingDate" placeholder="00/00/0000"  @blur="validateField('openingDate', step2.openingDate)">
                 <div class="form-field__error" v-if="errors.openingDate">{{ errors.openingDate }}</div>
               </div>
 
               <div class="form-field__group">
                 <label class="form-field__label" for="companyPhoneNumber">Telefone</label>
-                <input class="form-field__field" type="text" @keydown.enter.prevent id="companyPhoneNumber" name="companyPhoneNumber" v-model="step2.phone"   @blur="validateField('phone', step2.phone)">
+                <input class="form-field__field" type="text" @keydown.enter.prevent id="companyPhoneNumber" name="companyPhoneNumber" v-model="step2.phone" placeholder="000000000"  @blur="validateField('phone', step2.phone)">
                 <div class="form-field__error" v-if="errors.phone">{{ errors.phone }}</div>
               </div>
             </template>
 
             <div class="form-field__group">
               <label class="form-field__label" for="userPassword">Sua senha</label>
-              <input class="form-field__field" type="password" @keydown.enter.prevent id="userPassword" name="userPassword" v-model="step3.password"   @blur="validateField('password', step3.password)">
+              <div class="toggle-password-field-type">
+                <input class="form-field__field" :type="passwordFieldType" @keydown.enter.prevent id="userPassword" name="userPassword" v-model="step3.password" placeholder="******"   @blur="validateField('password', step3.password)">
+                <ButtonBase variant="outlined" @click="togglePasswordView">&#128065;</ButtonBase>
+              </div>
               <div class="form-field__error" v-if="errors.password">{{ errors.password }}</div>
             </div>
 
@@ -216,6 +218,7 @@ const {errors, validateField, validateAllFields} = useValidation();
 
 const currentStep = ref(1);
 const totalSteps = ref(4);
+let passwordFieldType = ref('password');
 
 const feedbackInitialValue = {
   message: '',
@@ -255,7 +258,7 @@ const goToNextStep = () => {
   } 
 }
 
-const goToPreviousStep = () => {  
+const goToPreviousStep = () => {    
   currentStep.value --;
 }
 
@@ -325,10 +328,7 @@ const validateStep3 = () => {
     isValid,
     fieldsToValidate
   }
-
 }
-
-
 
 const handleSubmitForm = ()=> {
 
@@ -340,16 +340,15 @@ const handleSubmitForm = ()=> {
   }   
 }
 
-  
+ 
 const groupAllFieldsData = () => {
   const step1Fields = validateStep1().fieldsToValidate;
   const step2Fields = validateStep2().fieldsToValidate;
   const step3Fields = validateStep3().fieldsToValidate;
 
-  const allFields = step1Fields.concat(step2Fields, step3Fields);
+  const allFields = [...step1Fields, ...step2Fields, ...step3Fields]
 
   return allFields;
-
 }
 
 const submitForm = async (allFields) => {
@@ -388,6 +387,10 @@ const startRewRegister = () => {
 provide('restartRegister', startRewRegister);
 
 
+
+const togglePasswordView = () => {
+  passwordFieldType.value = passwordFieldType.value === 'password' ? 'text' : 'password'
+}
 </script> 
 
 
@@ -398,8 +401,8 @@ provide('restartRegister', startRewRegister);
   border: none;
   &__fields-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    column-gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    column-gap: 4rem;
   }
   &__actions {
     display: flex;
@@ -407,8 +410,8 @@ provide('restartRegister', startRewRegister);
     justify-content: space-between;
     margin-block-start: 2rem;
     .button:only-of-type {
-      @media (max-width: 800px) {
-        width: calc(50% - 20px);
+      @media (max-width: 80rem) {
+        width: calc(50% - 2rem);
         width: 100%;
       }
     }    
@@ -455,6 +458,17 @@ provide('restartRegister', startRewRegister);
   }
 }
 
+
+.toggle-password-field-type {
+  display: flex;
+  gap: 1.6rem;
+}
+
+
+input[type=date] {
+  padding-block: 0.95rem;
+  font-family: inherit;
+}
 
 
 </style>

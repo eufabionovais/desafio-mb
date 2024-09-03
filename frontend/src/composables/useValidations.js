@@ -18,7 +18,7 @@ export function useValidation() {
 
       case 'name' : 
         if(!value) {
-          errors.value.name = "Insira seu nome."
+          errors.value.name = "Por favor, insira seu nome."
           return 
         }    
 
@@ -32,12 +32,10 @@ export function useValidation() {
           errors.value.companyName = "Insira a razão social."
           return 
         }    
-
         if(isMinLength(value, 2)) {
           errors.value.companyName = "A razão social deve ter ao menos 2 caractéres."
         }   
-        break;            
-        
+        break;                    
 
       case 'type' : 
         if(!value) {
@@ -71,10 +69,8 @@ export function useValidation() {
         if(value.length < 10 || value.length > 11 ) {
           errors.value.phone = "O número de telefone deve ter entre 10 e 11 dígitos."
           return
-        }      
-
+        }     
         break;
-
 
       case 'openingDate' : 
         if(!value || !isDateValid(value)) {
@@ -91,8 +87,7 @@ export function useValidation() {
         if(value.length < 6) {
           errors.value.password = "Sua senha deve ter ao menos 6 dígitos"
           return
-        }
-      
+        }      
         break;        
 
       case 'minLength' : 
@@ -105,9 +100,7 @@ export function useValidation() {
         if(!value || isMaxLength(value, valueMaxLength)) {
           errors.value[field] = `O campo ${field} requer no máximo ${valueMaxLength} caractéres.` 
         }        
-        break;
-
-    
+        break;    
 
       default:
         if(!value) {
@@ -127,9 +120,8 @@ export function useValidation() {
 
     return !Object.values(errors.value).some((error) => {
       return error !== ''
-    })
-    
-    // return !Object.values(errors.value).some((error) => error !== '');
+    })    
+
   };
 
 

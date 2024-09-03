@@ -4,7 +4,7 @@
       <div v-if="data">
         <ul class="feedback-message__list">
           <li class="feedback-message__list-item" v-for="(field, key) in data" :key="key">
-            <b>{{ key }}:</b> {{ field }}
+              <b>{{ key }}:</b> {{ field }}
           </li>
         </ul>
       </div>
